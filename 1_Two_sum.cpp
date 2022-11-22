@@ -33,70 +33,79 @@ using namespace std;
 //     }
 // }
 
-// class Solution{
-//     public:
-//         vector<int> twoSum(vector<int>& nums, int target) {
-//         vector<pair<int,int>> v;
-//         int i =0,j = nums.size()-1;
-//         for(int i =0;i<nums.size();i++){
-//             v.push_back({nums[i],i});
-//         }
-//         sort(v.begin(),v.end());
-//         while(i<j){
-//             if(v[i].first+v[j].first==target){
-//                 break;
+class Solution{
+    public:
+        vector<int> twoSum(vector<int>& nums, int target) {
+        vector<pair<int,int>> v;
+        int i =0,j = nums.size()-1;
+        for(int i =0;i<nums.size();i++){
+            v.push_back({nums[i],i});
+        }
+        sort(v.begin(),v.end());
+        while(i<j){
+            if(v[i].first+v[j].first==target){
+                break;
+            }
+            else if(v[i].first+v[j].first<target){
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        return {v[i].second,v[j].second};
+    }
+};
+
+int main(){
+    Solution s;
+    int target;
+    cin>>target;
+    vector<int> v = {3,2,4};
+    vector<int> ans = s.twoSum(v,target);
+    for(auto i:ans){
+        cout<<i<<" ";
+    }
+}
+
+
+// class Solution {
+// public:
+//     vector<int> twoSum(vector<int>& nums, int target) {
+//         vector<int> v;
+//            unordered_map<int,int> m;
+//             for(int i = 0;i<nums.size();i++){
+//                 if(m.find(target-nums[i])!=m.end()){
+//                     v.push_back(m[target-nums[i]]);
+//                     v.push_back(i);
+//                 }
+//                 else{
+//                     m[nums[i]]=i;
+//                 }
 //             }
-//             else if(v[i].first+v[j].first<target){
-//                 i++;
-//             }
-//             else{
-//                 j--;
-//             }
-//         }
-//         return {v[i].second,v[j].second};
+//         return v;
 //     }
 // };
 
 
-
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> v;
-           unordered_map<int,int> m;
-            for(int i = 0;i<nums.size();i++){
-                if(m.find(target-nums[i])!=m.end()){
-                    v.push_back(m[target-nums[i]]);
-                    v.push_back(i);
-                }
-                else{
-                    m[nums[i]]=i;
-                }
-            }
-        return v;
-    }
-};
-
-
-int main(){
-     int t;
-     cin>>t;
-     while(t--){
-        int n;
-        cin>>n;
-        int a;
-        int target;
-        cin>>target;
-        Solution obj;
-        vector<int> v ;
-        //v= {2,5,9,11};
-         for(int i =0;i<n;i++){
-             cin>>a;
-             v.push_back(a);
-         }
-    vector<int> result=obj.twoSum(v,target);
-    for(int i:result){
-        cout<<i<<" ";
-     }
-    }
- }
+// int main(){
+//      int t;
+//      cin>>t;
+//      while(t--){
+//         int n;
+//         cin>>n;
+//         int a;
+//         int target;
+//         cin>>target;
+//         Solution obj;
+//         vector<int> v ;
+//          for(int i =0;i<n;i++){
+//              cin>>a;
+//              v.push_back(a);
+//          }
+//     vector<int> result=obj.twoSum(v,target);
+//     for(int i:result){
+//         cout<<i<<" ";
+//      }
+//     }
+//  }
